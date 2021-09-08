@@ -8,11 +8,11 @@
         ],
         "sourceMap": true,
         "rootDir": "src",
-
         "strict": true,
-        "noUnusedLocals": true,
         "noImplicitReturns": true,
-        "noFallthroughCasesInSwitch": true
+        "noFallthroughCasesInSwitch": true,
+        "noUnusedParameters": true,
+        "noUnusedLocals": true,
     },
     "exclude": [
         "node_modules",
