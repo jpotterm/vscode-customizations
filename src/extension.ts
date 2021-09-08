@@ -1,15 +1,20 @@
 import * as vscode from 'vscode';
+import { v4 as uuidv4 } from 'uuid';
+
+function generateUuidCommand() {
+    const editor = vscode.window.activeTextEditor;
+    if (!editor) return;
+
+    editor.edit((editBuilder) => {
+        for (const selection of editor.selections) {
+            const uuid = uuidv4().replace(/-/g, '');
+            editBuilder.replace(selection, uuid);
+        }
+    });
+}
 
 export function activate(context: vscode.ExtensionContext) {
-    vscode.commands.executeCommand('setContext', 'listAutomaticKeyboardNavigation', false);
-
-    let disposable = vscode.commands.registerCommand('customizations.helloWorld', () => {
-        vscode.window.showInformationMessage('Hello World from customizations!');
-    });
-
-    context.subscriptions.push(disposable);
+    context.subscriptions.push(vscode.commands.registerCommand('customizations.generateUuid', generateUuidCommand));
 }
 
-export function deactivate() {
-    vscode.commands.executeCommand('setContext', 'listAutomaticKeyboardNavigation', true);
-}
+export function deactivate() {}

@@ -1,3 +1,5 @@
 # Customizations
 
-My personal customizations to VSCode. At the moment this only sets the `listAutomaticKeyboardNavigation` context because an extension is the only way to set that.
+My personal customizations to VSCode:
+
+    - Registers a `Generate UUID` command that generates a random UUID (without dashes).

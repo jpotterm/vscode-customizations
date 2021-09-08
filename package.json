@@ -2,7 +2,12 @@
     "name": "customizations",
     "displayName": "Customizations",
     "description": "My personal customizations for VSCode",
-    "version": "0.0.3",
+    "version": "1.0.0",
+    "publisher": "jpotterm",
+    "repository": {
+        "type": "git",
+        "url": "https://github.com/jpotterm/vscode-customizations.git"
+    },
     "engines": {
         "vscode": "^1.60.0"
     },
@@ -10,25 +15,31 @@
         "Other"
     ],
     "activationEvents": [
-        "*"
+        "onCommand:customizations.generateUuid"
     ],
     "main": "./out/extension.js",
     "contributes": {
         "commands": [
             {
-                "command": "customizations.helloWorld",
-                "title": "Hello World"
+                "command": "customizations.generateUuid",
+                "title": "Generate UUID"
             }
         ]
     },
     "scripts": {
         "vscode:prepublish": "npm run compile",
         "compile": "tsc -p ./",
-        "watch": "tsc -watch -p ./"
+        "watch": "tsc -watch -p ./",
+        "package": "vsce package"
     },
     "devDependencies": {
         "@types/node": "^16.7.13",
+        "@types/uuid": "^8.3.1",
         "@types/vscode": "^1.60.0",
-        "typescript": "^4.4.2"
+        "typescript": "^4.4.2",
+        "vsce": "^1.97.0"
+    },
+    "dependencies": {
+        "uuid": "^8.3.2"
     }
 }
